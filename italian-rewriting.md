@@ -233,6 +233,97 @@ If the user explicitly requires a bulleted or numbered list to remain as a list 
 
 ---
 
+## Linguist-Level Refinements — Layer 3 (Human Editor Bypass)
+
+These five patterns survive commercial detectors but are caught by a seasoned human editor or a specialist in Italian academic prose. Applying them turns the output from «AI-undetectable» to «indistinguishable from a university professor».
+
+### 1. Lexical Entrainment — Synonymic Variation
+
+Because the source text is freshly in context, the model recycles exact noun phrases from the original. If the source says «la normativa tecnica» three times, so does the output.
+
+**Rule:** Never repeat the same core noun or concept phrase more than twice in the same paragraph. Rotate through synonyms, hypernyms, or periphrases.
+
+| Base term | Variation 1 | Variation 2 |
+|---|---|---|
+| la normativa | il dettato legislativo | la disposizione |
+| il mercato | il comparto | l'ambito di riferimento |
+| il problema | la criticità | il nodo irrisolto |
+| la società | l'ente | il soggetto in questione |
+| l'incremento | la crescita | l'aumento |
+| il dato | il valore | la cifra rilevata |
+
+This also applies to verbs: do not use the same verb twice in adjacent sentences to describe the same action.
+
+### 2. Explanatory Colon — The Argumentative *Due Punti*
+
+AI uses `:` almost exclusively to introduce lists or block quotes. In high-level Italian academic writing, the colon is a logical operator that replaces causal connectives (*infatti*, *perché*, *poiché*). It links a statement directly to its explanation, consequence, or proof.
+
+**Rule:** Use the explanatory colon at least once per page. Place it between a claim and its evidence or consequence — never precede it with a connective.
+
+> ✗ AI: "Il crollo è avvenuto perché i tassi di interesse hanno superato la soglia critica."
+> ✓ Human: "Il motivo del crollo è evidente: i tassi di interesse hanno superato la soglia critica."
+
+> ✗ AI: "Poiché la norma è vaga, la giurisprudenza ha colmato il vuoto."
+> ✓ Human: "La norma è vaga: la giurisprudenza ha colmato il vuoto."
+
+Do not confuse this with the list colon («I requisiti sono i seguenti:»). The argumentative colon precedes a *single clause*, not an enumeration.
+
+### 3. Academic Nominalization — *Stile Nominale*
+
+Italian academic and bureaucratic prose runs on nouns, not verbs. AI defaults to verbal clauses because they are computationally simpler (lower BPE cost per clause). A human professor converts the main verb into a subject noun and makes the agent implicit.
+
+**Rule:** In academic register, prefer the nominal style. Transform verbal subordinate clauses into noun phrases wherever the result is natural Italian.
+
+| Verbal (AI) | Nominal (human) |
+|---|---|
+| «Poiché i prezzi sono aumentati, le imprese hanno reagito» | «L'aumento dei prezzi ha innescato la reazione delle imprese» |
+| «Quando la direttiva è stata attuata, i costi sono cambiati» | «L'attuazione della direttiva ha modificato la struttura dei costi» |
+| «Il fatto che la domanda sia calata ha ridotto i margini» | «Il calo della domanda ha eroso i margini» |
+| «Dato che il contratto è stato rescisso, il danno è sorto» | «La rescissione del contratto ha fatto sorgere il danno» |
+
+Target: at least 2 nominalizations per page in academic mode. Not mandatory in saggistico or conversazionale.
+
+### 4. Litotes and Negative Framing
+
+AI is trained for positive assertion and helpfulness. It always writes «il dato è rilevante», «è importante», «è significativo». Human academics hedge with litotes — affirming by negating the opposite — which signals intellectual caution rather than enthusiasm.
+
+**Rule:** Insert at least one litotes per page. Use cautious double-negative framing for claims that require academic restraint.
+
+| Direct assertion (AI) | Litotes (human) |
+|---|---|
+| «È importante» | «Non è trascurabile» · «Non è privo di rilievo» |
+| «È rilevante» | «Non è irrilevante» · «Non è un dettaglio marginale» |
+| «È probabile che» | «Non si può escludere che» · «Non appare inverosimile» |
+| «Dimostra che» | «Non smentisce l'ipotesi che» · «Non contraddice la tesi per cui» |
+| «È evidente che» | «Non appare privo di fondamento ritenere che» |
+
+Apply sparingly — one or two per page. Overuse makes text appear defensive rather than cautious.
+
+### 5. Idiomatic Collocations — *Verbi Supporto* Specifici
+
+Banning weak support verbs (Layer 2, §3) may lead the AI to replace them with generic English-calque verbs: «fare una critica», «causare un dubbio», «mettere attenzione». Italian has fixed lexical collocations where a specific noun pairs with one specific verb, and substituting it reads as foreign.
+
+**Rule:** Use proper Italian noun-verb collocations. Never use a generic action verb where a fixed collocation exists.
+
+| Wrong (generic / calque) | Correct Italian collocation |
+|---|---|
+| fare una critica | **muovere** una critica |
+| causare un dubbio | **sollevare** un dubbio |
+| mettere attenzione | **prestare** attenzione |
+| fare un'ipotesi | **avanzare** un'ipotesi |
+| fare una proposta | **formulare** una proposta |
+| portare avanti un'azione | **porre in essere** un'azione |
+| fare una domanda | **rivolgere** una domanda |
+| ottenere un risultato | **conseguire** / **raggiungere** un risultato |
+| dare importanza | **attribuire** importanza / **annettere** rilievo |
+| creare un problema | **sollevare** / **porre** un problema |
+| usare uno strumento | **ricorrere a** / **avvalersi di** uno strumento |
+| mostrare un limite | **rivelare** / **palesare** un limite |
+
+When in doubt: if the verb could be translated as "do/make/cause/give/use" and the noun is abstract, search for the fixed Italian collocation.
+
+---
+
 ## Core Principles
 
 ### 1. Factual fidelity — zero tolerance for invention
@@ -383,6 +474,13 @@ Before delivering output, verify:
 15. **Ciò density** — max 1 *ciò* per 300 words; max 1 *tale/tali* per paragraph; all others replaced with specific noun phrases
 16. **Scope containment** — no geographical, temporal, or conceptual expansion beyond source material; flag "quadro europeo", "tendenza globale", "storicamente" if absent from source
 17. **List asymmetry** — if lists present: verify unequal point lengths, mixed grammatical structures, non-uniform bolding
+
+**Layer 3 — Linguist-Level Refinements**
+18. **Lexical entrainment** — no core noun or concept phrase repeated more than twice in the same paragraph; flag same-verb repetition in adjacent sentences
+19. **Explanatory colon** — at least 1 argumentative colon per page (claim → explanation, no preceding connective); zero «:» used solely for lists where prose could replace it
+20. **Nominalization density** — at least 2 *stile nominale* constructions per page in academic mode; verbal subordinates should be converted to noun-phrase subjects where natural
+21. **Litotes count** — at least 1 litotes or cautious double-negative per page; zero direct enthusiastic assertions like «è evidente» or «è importante» without hedging
+22. **Collocation audit** — scan for: fare una critica, causare un dubbio, mettere attenzione, fare un'ipotesi, creare un problema, usare uno strumento; replace each with its fixed Italian collocation
 
 ---
 
