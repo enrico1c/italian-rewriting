@@ -133,6 +133,106 @@ In informal or conversational contexts:
 
 ---
 
+## Advanced Fingerprints — Layer 2 (Next-Gen Detector Bypass)
+
+These seven patterns escape basic detectors but are caught by trained human editors and next-generation classifiers. A text that passes Layer 1 but ignores these is still identifiable.
+
+### 1. Asyndeton — Ban Over-Linking
+
+The AI swaps banned connectives for allowed ones (altresì, ciononostante) and keeps the same hyper-linked skeleton. Human writers let the logical connection between sentences remain implicit.
+
+**Rule:** At least one in three sentence transitions must be achieved through juxtaposition alone — no explicit connective, just punctuation (colon, semicolon, full stop). Let the reader infer the causal or contrastive link.
+
+> ✗ AI: "Il costo è aumentato. Di conseguenza, la domanda si è contratta."
+> ✓ Human: "Il costo è aumentato; la domanda si è contratta."
+
+> ✗ AI: "La norma è vaga. Ciononostante, la giurisprudenza ha colmato il vuoto."
+> ✓ Human: "La norma è vaga. La giurisprudenza ha colmato il vuoto."
+
+**Apply across the whole text:** count explicit connectives per paragraph. If every sentence transition uses one, cut half of them.
+
+### 2. Adverbial Saturation — The -mente Blacklist
+
+The Softmax function loves Italian adverbs in *-mente* to hedge neutral stances without committing to strong vocabulary. They prop up weak verbs without adding information.
+
+**Strictly limit (max 1 per paragraph):**
+`significativamente` `particolarmente` `progressivamente` `costantemente` `efficacemente` `sostanzialmente` `generalmente` `notevolmente` `complessivamente` `tendenzialmente`
+
+**Replace with a precise verb or strong adjective:**
+- «è significativamente aumentato» → «è balzato», «si è impennato», «ha segnato un'impennata»
+- «è particolarmente rilevante» → «pesa», «incide in modo diretto», «non è marginale»
+- «è progressivamente diminuito» → «è calato», «si è ridotto gradualmente», «ha perso quota»
+- «è costantemente presente» → «persiste», «rimane strutturale», «non accenna a scomparire»
+
+### 3. Weak Support Verbs — Ban the Academic Crutch
+
+AI trained on Italian academic corpora defaults to semantically empty "support verbs" that substitute for *essere* without adding precision.
+
+**Ban as main predicates (they may appear only as secondary or incidental verbs):**
+`rappresentare` (as a substitute for essere) · `costituire` · `fornire` · `determinare` · `evidenziare` · `sottolineare` · `dimostrare` (when meaning mere exemplification)
+
+**Replace with the specific action:**
+- «Questo rappresenta un problema» → «Questo ostacola», «Questo blocca», «Questo complica»
+- «Ciò costituisce un limite» → «Ciò vincola», «Ciò restringe», «È un limite concreto»
+- «Fornisce una soluzione» → «Risolve», «Offre un'uscita», «Apre una via»
+- «Determina un incremento» → «Spinge al rialzo», «Produce un aumento», «Fa salire»
+
+### 4. Internal Meta-Discourse — Absolute Ban
+
+To maintain coherence under Context Window pressure, the model inserts navigational phrases that talk about the text rather than the subject. These are invisible to the writer and highly visible to detectors.
+
+**Forbidden phrases (any paraphrase of these):**
+- «Come analizzeremo nel prossimo paragrafo…»
+- «È opportuno ora concentrarsi su…»
+- «Passando al secondo punto…»
+- «Come si è visto in precedenza…»
+- «Prima di procedere, è necessario chiarire che…»
+- «A questo punto della trattazione…»
+- «Nei paragrafi che seguono si esaminerà…»
+
+**Rule:** The text must talk about the subject, never about itself. Remove any sentence whose sole function is to announce what the next sentence will say. Just say it.
+
+### 5. Ciò Overuse — Prefer Specific Noun Summaries
+
+AI uses *ciò* to compress prior context with minimal token cost. Human academic writers either use *questo* or — better — a specific noun phrase that names what they are referring to.
+
+**Rule:** Max one *ciò* per 300 words. Every other instance must be replaced with:
+- A specific noun: «Questa anomalia», «Tale meccanismo», «Questa dinamica», «Il dato in questione»
+- The pronoun *questo/questa*: «Questo dimostra…», «Questa tendenza…»
+- A full noun repetition for clarity: «La norma in esame», «Il vincolo appena descritto»
+
+> ✗ AI-dense: "Ciò premesso, ciò che emerge è che ciò non è sufficiente."
+> ✓ Human: "Premesso questo, il dato che emerge è che la misura non basta."
+
+Also limit `tale`/`tali` — a second Softmax favorite for the same reason. Max one per paragraph.
+
+### 6. Containment Rule — No Scope Creep
+
+When uncertain how to close a paragraph, AI inflates the scope: a local tax law becomes "part of a broader European framework"; a company strategy becomes "a global trend." This universalization is pure Token Economy padding.
+
+**Rule:** The text must not expand the geographical, historical, conceptual, or temporal scope beyond what is explicitly present in the source. If the source is about a specific Italian regulation, it stays about that regulation. No sentences beginning with or implying:
+- «In un contesto europeo più ampio…»
+- «Questo fenomeno riflette una tendenza globale…»
+- «Storicamente, tale approccio…» (if the source has no historical dimension)
+- «Nel quadro internazionale…»
+
+If a broader context is genuinely in the source, quote it exactly. Do not extrapolate.
+
+### 7. List Asymmetry — When Lists Are Permitted
+
+If the user explicitly requires a bulleted or numbered list to remain as a list (not absorbed into prose), do **not** make it symmetrical. AI lists have perfectly uniform point lengths, identical grammatical structures, and consistent bolding.
+
+**Required asymmetry:**
+- Vary point length drastically: one point may be a two-word fragment; another may run three sentences.
+- Vary grammatical structure: not every point should start with a noun or an infinitive.
+- Avoid consistent bolding: bold only when the emphasized concept genuinely differs in weight.
+- Do not use a colon to introduce the list unless the colon is syntactically necessary.
+
+> ✗ AI list: three points, each exactly one sentence, each starting with a bold noun.
+> ✓ Human list: point 1 is a fragment, point 2 is two sentences with a subordinate clause, point 3 has no bolding and ends with a parenthetical.
+
+---
+
 ## Core Principles
 
 ### 1. Factual fidelity — zero tolerance for invention
@@ -262,16 +362,27 @@ For each section:
 ## Quality Gates
 
 Before delivering output, verify:
+
+**Layer 1 — Core AI Fingerprints**
 1. **Factual accuracy** — spot-check 5 random facts against source
 2. **Em-dash count** — must be zero
 3. **Blacklist scan** — zero occurrences of: cruciale, fondamentale, sfaccettato, resiliente, intrinseco, vibrante, esplorare, immergersi, svelare, plasmare, tessere
 4. **Forbidden openers** — no sentence starting with: Tuttavia / Inoltre / Peraltro / Pertanto / Di conseguenza / In conclusione / In sintesi / Detto ciò / In ultima analisi
-5. **Sentence length distribution** — no monotonous 15–20 word average; check for staccato variation
+5. **Sentence length distribution** — at least 20% of sentences under 8 words, at least 20% over 25 words; no monotonous 15–20 word average
 6. **Pro-drop compliance** — no two consecutive sentences with same explicit subject
 7. **Dislocation count** — at least 2–3 dislocations or cleft sentences per page
 8. **Register consistency** — no colloquialisms or anglicisms (academic mode)
 9. **Structure completeness** — all source sections represented
 10. **Accents** — scan for bare `e`/`a`/`o`/`u`/`i` where accents are required; zero unaccented substitutions
+
+**Layer 2 — Advanced Fingerprints**
+11. **Asyndeton ratio** — at least 1 in 3 sentence transitions uses punctuation only (no explicit connective); count connectives per paragraph, cut if every transition has one
+12. **-mente adverb density** — max 1 adverb in *-mente* per paragraph; flag significativamente, particolarmente, progressivamente, costantemente, efficacemente, sostanzialmente
+13. **Support verb scan** — no *rappresentare* used as substitute for *essere*; check costituire, fornire, determinare as main predicates
+14. **Meta-discourse scan** — zero sentences about the text itself; no "come vedremo", "passando a", "a questo punto della trattazione", "nei paragrafi seguenti"
+15. **Ciò density** — max 1 *ciò* per 300 words; max 1 *tale/tali* per paragraph; all others replaced with specific noun phrases
+16. **Scope containment** — no geographical, temporal, or conceptual expansion beyond source material; flag "quadro europeo", "tendenza globale", "storicamente" if absent from source
+17. **List asymmetry** — if lists present: verify unequal point lengths, mixed grammatical structures, non-uniform bolding
 
 ---
 
