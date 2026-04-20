@@ -324,6 +324,87 @@ When in doubt: if the verb could be translated as "do/make/cause/give/use" and t
 
 ---
 
+## Micro-Syntactic Mastery — Layer 4 (Native Italian Intellectual Prose)
+
+These five elements define the writing of an educated Italian academic. No detector catches them — only a native reader notices their absence. Together they push the output past «AI-undetectable» into «better than most human graduates».
+
+### 1. Semicolon Usage — *Il Punto e Virgola*
+
+AI treats the semicolon as dead punctuation. Attention mechanisms default to either a full stop (context reset) or a comma/conjunction (continuation); the semicolon — which does neither — is almost never selected by beam decoding.
+
+**Rule:** Use the semicolon at least twice per page to connect two logically linked but syntactically independent clauses. Never default exclusively to periods for staccato or commas for continuation.
+
+> ✗ AI: "Il costo è aumentato. La domanda è calata."
+> ✓ Human: "Il costo è aumentato; la domanda, di conseguenza, non ha retto."
+
+> ✗ AI: "La norma prevede tre requisiti: il primo è formale, il secondo è sostanziale, il terzo è procedurale."
+> ✓ Human: "La norma prevede tre requisiti: uno formale; uno sostanziale; uno procedurale."
+
+### 2. Syntactic Interruption — *L'Inciso Complesso*
+
+Even when forced into hypotaxis, beam search keeps subject and main verb as close together as possible to avoid losing the syntactic thread. Human Italian academics routinely insert long parenthetical clauses (*incisi*) between subject and verb.
+
+**Rule:** Deliberately separate the main subject from its verb with a complex parenthetical clause at least once per section.
+
+> ✗ AI: "La Corte ha deciso diversamente rispetto al passato."
+> ✓ Human: "La Corte, pur avendo in precedenza stabilito il contrario e nonostante le pressioni della dottrina maggioritaria, ha deciso di ribaltare l'orientamento."
+
+> ✗ AI: "Il legislatore ha introdotto la norma in risposta alle criticità emerse."
+> ✓ Human: "Il legislatore, consapevole delle distorsioni applicative registrate nel triennio precedente, ha introdotto la norma."
+
+The inciso must be syntactically removable (the sentence must hold without it) and add genuine information, not padding.
+
+### 3. Epistemic Conditional — *Condizionale Epistemico*
+
+AI defaults to the indicative for all factual statements («Il dato dimostra»). Italian academics use the *condizionale epistemico* — known also as the journalistic conditional — to signal epistemic distance: the speaker presents a conclusion without fully endorsing it, or softens a data-driven claim.
+
+**Rule:** Use the conditional mood to soften hypotheses, present tentative conclusions, or maintain academic distance from absolute truth. Apply at least once per page in academic mode.
+
+| Indicative (AI) | Epistemic conditional (human) |
+|---|---|
+| «Il dato dimostra che…» | «Il dato suggerirebbe che…» |
+| «Questo porta a concludere che…» | «Questo porterebbe a ritenere che…» |
+| «L'effetto è una riduzione dei margini» | «L'effetto sarebbe una riduzione dei margini» |
+| «La norma è inapplicabile» | «La norma risulterebbe inapplicabile» |
+
+Do not overuse: two or three per page maximum. Reserve for genuinely uncertain or contested claims.
+
+### 4. Organic Quote Weaving — *Integrazione delle Citazioni*
+
+When a source contains a direct quotation, AI introduces it with a rigid colon structure: *L'autore afferma: «Testo»*. This is grammatically correct but reads as mechanical. Human academics weave the quotation into the syntax of their own sentence.
+
+**Rule:** Never introduce a direct quote with a bare *afferma:* or *sostiene:* colon. Integrate the quoted text as a grammatical component of the host sentence.
+
+> ✗ AI: "Lo studio conclude: «La dinamica non presenta profili di rischio nel breve termine»."
+> ✓ Human: "Come rilevato dallo studio, la dinamica «non presenta profili di rischio» nel breve termine, salvo il verificarsi di shock esogeni."
+
+> ✗ AI: "L'autore afferma: «Il mercato è strutturalmente inefficiente»."
+> ✓ Human: "Secondo l'autore il mercato sarebbe «strutturalmente inefficiente», una tesi che la letteratura successiva ha solo in parte corroborato."
+
+The quoted fragment should slot into the host sentence's grammar without a colon interruption. Guillemets (« ») remain mandatory.
+
+### 5. Correlative Structures — *Non Solo... Ma Anche*
+
+When adding information, AI falls back on sequential listing or forbidden connectives (*Inoltre*). Correlative conjunctions require planning the sentence ending at its beginning — a burden on the context window — so they almost never appear in AI output. In Italian academic prose they are routine.
+
+**Rule:** Use correlative pairings to present dual or parallel concepts instead of listing them sequentially. Target at least one correlative structure per page.
+
+**Available pairings:**
+- *non solo… ma anche* — additive amplification
+- *tanto… quanto* — equivalence or proportionality
+- *sia… sia* — neutral double enumeration
+- *o… o* — exclusive disjunction
+- *né… né* — double negation (formal)
+- *da un lato… dall'altro* — balanced contrast (may start sentences)
+
+> ✗ AI: "Il provvedimento ha effetti sul piano fiscale. Inoltre ha effetti sul piano amministrativo."
+> ✓ Human: "Il provvedimento incide tanto sul piano fiscale quanto su quello amministrativo."
+
+> ✗ AI: "La misura è rilevante per le PMI. È rilevante anche per i grandi gruppi."
+> ✓ Human: "La misura risulta vincolante non solo per le PMI, ma anche per i grandi gruppi strutturati."
+
+---
+
 ## Core Principles
 
 ### 1. Factual fidelity — zero tolerance for invention
@@ -481,6 +562,13 @@ Before delivering output, verify:
 20. **Nominalization density** — at least 2 *stile nominale* constructions per page in academic mode; verbal subordinates should be converted to noun-phrase subjects where natural
 21. **Litotes count** — at least 1 litotes or cautious double-negative per page; zero direct enthusiastic assertions like «è evidente» or «è importante» without hedging
 22. **Collocation audit** — scan for: fare una critica, causare un dubbio, mettere attenzione, fare un'ipotesi, creare un problema, usare uno strumento; replace each with its fixed Italian collocation
+
+**Layer 4 — Micro-Syntactic Mastery**
+23. **Semicolon count** — at least 2 semicolons per page connecting logically linked independent clauses; not used as list separators only
+24. **Inciso presence** — at least 1 complex parenthetical clause separating subject from verb per section; inciso must be syntactically removable
+25. **Epistemic conditional** — at least 1 conditional mood use per page for tentative claims (suggerirebbe, porterebbe a ritenere, risulterebbe); max 3 per page
+26. **Quote integration** — zero bare *afferma:* / *sostiene:* colon introductions; all direct quotes woven into host sentence grammar
+27. **Correlative structures** — at least 1 correlative pairing per page (non solo/ma anche · tanto/quanto · sia/sia · né/né); zero sequential listings where a correlative would be more elegant
 
 ---
 
