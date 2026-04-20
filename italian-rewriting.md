@@ -1,12 +1,12 @@
 ---
 name: italian-rewriting
-description: Rewrite source material (PDF, raw text, docx content) into natural, academic Italian prose — eliminating AI-generated patterns, em-dashes, and mechanical phrasing while preserving every factual claim exactly.
+description: Rewrite source material (PDF, raw text, docx content) into natural Italian prose — eliminating every statistical, lexical, syntactic, and typographic AI fingerprint to pass GPTZero and similar detectors, while preserving every factual claim exactly.
 level: 3
 ---
 
 # Italian Rewriting
 
-Rewrite source material into fluent, academic Italian prose suitable for university coursework. Preserves every fact, number, legal reference, and structural claim exactly — changes only the language surface. Eliminates all AI-generation fingerprints (em-dashes, bullet-to-prose dumps, robotic connectives) and replaces them with idiomatic Italian academic register.
+Rewrite source material into fluent Italian prose that bypasses AI-detection tools (GPTZero, Originality, ZeroGPT). Preserves every fact, number, legal reference, and structural claim exactly — changes only the language surface. Targets academic register by default; supports saggistico and conversazionale on request.
 
 ## When to Use
 
@@ -14,54 +14,179 @@ Use this skill when:
 - the user provides a PDF, docx, or raw text and asks to rewrite it in Italian
 - the source is a slide deck, bullet-point outline, or rough draft to be converted into continuous prose
 - the goal is academic Italian (university paper, group project, thesis chapter)
-- the user says "riscrivilo in italiano", "rendi il testo più naturale", or similar
-- the output must have no em-dashes, no list dumps masquerading as paragraphs, no AI slop
+- the user says "riscrivilo in italiano", "rendi il testo più naturale", "deve passare gptzero", or similar
+- the output must have no AI fingerprints
 
 Do **not** use when:
-- the user wants a translation only (not a rewrite/naturalisation)
+- the user wants a translation only (not a rewrite)
 - the source language is already polished Italian
 - the output target is informal or non-academic Italian
+
+---
+
+## Anti-AI-Detection Core (Priority Layer)
+
+These rules take precedence over everything else. They address the statistical and algorithmic patterns that classifiers detect.
+
+### Absolute Lexical Blacklist
+
+**Never use these words or their derivatives, anywhere, in any context:**
+
+*Algorithmic adjectives/metaphors:*
+`cruciale` `fondamentale` `sfaccettato` `resiliente` `intrinseco` `vibrante`
+
+*AI opening/closing verbs:*
+`esplorare` `immergersi` `svelare` `plasmare` `tessere`
+
+*Calques and false friends (in figurative/abstract use):*
+`navigare` (difficulties) · `panorama` / `paesaggio` (abstract scenarios) · `arazzo` · `regno` (figurative) · `sbloccare` (potential) · `testamento` (as proof/testimony) · `abbracciare` (ideas/changes)
+
+**Forbidden as sentence openers (may appear mid-sentence only):**
+`Tuttavia,` `Inoltre,` `Peraltro,` `Pertanto,` `Di conseguenza,` `In conclusione,` `In sintesi,` `Detto ciò,` `In ultima analisi,`
+
+### Burstiness — Mandatory Sentence Length Variance
+
+AI text converges on 15–20 words per sentence. Destroy this average. Alternate complex hypotactic periods with brutal staccato sentences of two or three words. Use the period as a hammer.
+
+> ✗ AI: "È importante notare che il mercato obbligazionario ha registrato una contrazione significativa nel corso dell'ultimo trimestre, evidenziando una tendenza che merita ulteriore approfondimento."
+> ✓ Human: "Il mercato obbligazionario è crollato nell'ultimo trimestre. Non è una sorpresa."
+
+### Pro-Drop — Aggressive Subject Omission
+
+Omit the grammatical subject in at least 80% of sentences. Italian is a pro-drop language; explicit subjects signal unnatural formality or foreign influence. Never start two consecutive sentences with the same explicit subject.
+
+> ✗ AI: "L'algoritmo processa i dati. L'algoritmo poi confronta i risultati."
+> ✓ Human: "L'algoritmo processa i dati, poi confronta i risultati."
+
+### Dislocation and Cleft Sentences
+
+Use right- and left-dislocation with clitic resumption constantly. These are native Italian pragmatic structures invisible to learner-writers and most LLMs.
+
+- Left dislocation: «Questa contraddizione, la letteratura non l'ha mai risolta davvero.»
+- Right dislocation: «Non l'ha mai risolta, questa contraddizione.»
+- Cleft (frase scissa): «È proprio qui che la teoria mostra i suoi limiti.»
+
+### Active Voice — Ban Passive Calques from English
+
+Ban passives translated from English ("È creduto che…", "Viene considerato come…"). Use active voice or the passivizing *si*:
+
+> ✗ "È generalmente creduto che la politica monetaria abbia un effetto limitato."
+> ✓ "Si ritiene generalmente che la politica monetaria abbia un effetto limitato."
+
+### Ban on Initial Gerunds
+
+Never open a sentence with a gerund. Replace with a subordinate clause.
+
+> ✗ "Essendo un meccanismo complesso, richiede un'analisi approfondita."
+> ✓ "Dato che si tratta di un meccanismo complesso, richiede un'analisi dettagliata."
+
+### Anti-Sandwich Structure
+
+- **No prompt paraphrase:** Never start by restating what the text is about.
+- **No moralizing conclusion:** No "In conclusione, è evidente che…" or summarizing final paragraph.
+- **Start in media res:** Jump directly into substance.
+- **End abruptly:** Stop when the information is finished.
+
+### Kill Toxic Enthusiasm and AI-Splaining
+
+- No customer-care exclamations.
+- No time clichés: «Nel mondo frenetico di oggi», «In un'epoca di rapidi cambiamenti».
+- Never make unprompted historical premises. Assume the reader already has basic context. Don't say "la città di Roma" — say "Roma".
+- Take a clear, direct stance. No diplomatic fence-sitting between pros and cons.
+
+### Typography — Italian Rules Only
+
+- **No Title Case:** Capitalize only the first word of headings («Il mercato obbligazionario», not «Il Mercato Obbligazionario»).
+- **No Oxford comma:** Never put a comma before the final *e* in a list.
+- **No spaced em-dash** ( — ) for parenthetical clauses. Use a comma, colon, or restructure.
+- **Guillemets:** «testo» for formal editorial; "testo" only in informal contexts.
+
+### Dirty Grammar (Neo-Standard Italian) — Informal/Conversational Register Only
+
+In informal or conversational contexts:
+- Polyvalent *che*: «Ho incontrato una persona che non sapevo chi fosse.»
+- Indicative instead of subjunctive: «Credo che è giusto così.»
+- Redundant pronouns: «A me mi sembra sbagliato.»
+- No forced euphonic *d*: «e anche», not «ed anche» when it sounds unnatural.
 
 ---
 
 ## Core Principles
 
 ### 1. Factual fidelity — zero tolerance for invention
-Every number, citation, legal article, institution name, percentage, date, and proper noun must match the source exactly. If the source says "55-65% delle previsioni", the output must say exactly that — not "circa il 60%". If uncertain about a fact, keep the source wording verbatim inside the rewritten sentence.
+Every number, citation, legal article, institution name, percentage, date, and proper noun must match the source exactly. If the source says "55-65% delle previsioni", the output says exactly that. If uncertain about a fact, keep the source wording verbatim.
 
 ### 2. Em-dash elimination
-Em-dashes (—) are an AI fingerprint in Italian. Replace every instance:
-- " — " (space–em-dash–space) → ", " or restructure the clause
-- "— " at sentence/bullet start → delete or rephrase as full sentence
-- Bare "—" → "," or restructure
-- After replacement: clean up ", ," → "," · ": ," → ":" · ",." → "." · ",;" → ";"
+Em-dashes (—) are an AI fingerprint. Replace every instance:
 
-### 3. Academic register
-Target: Italian university paper (Scienza delle Finanze / Law / Economics level). This means:
-- Complex but readable sentences (not telegraphic, not overly convoluted)
-- Appropriate hedging: "si può osservare", "appare evidente", "vale la pena sottolineare"
-- Passive constructions where natural: "è stato documentato", "si prevede", "viene classificato"
-- No colloquialisms, no anglicisms unless the technical term has no Italian equivalent
-- Numbered section headings in the form "1.  Titolo" (two spaces after the dot)
+| Source pattern | Italian replacement |
+|---|---|
+| `X — Y` (parenthetical) | `X, Y` or `X: Y` |
+| `X — Y — Z` (nested aside) | rephrase as subordinate clause |
+| `— item` (bullet marker) | delete; item becomes standalone sentence |
+| `X —` (trailing) | `X,` or end sentence |
+| `ovvero —` | `ovvero:` |
+| `cioè —` | `cioè:` |
+
+After replacement: clean up `, ,` → `,` · `: ,` → `:` · `,.` → `.` · `,;` → `;`
+
+### 3. Academic register (default)
+Target: Italian university paper (Scienza delle Finanze / Law / Economics level):
+- Complex but readable sentences — use hypotaxis even when computationally difficult
+- Hedging: «si può osservare», «appare evidente», «vale la pena sottolineare»
+- Passive only via *si*: «è stato documentato», «si prevede», «viene classificato»
+- No colloquialisms, no anglicisms unless no Italian equivalent exists
+- Numbered section headings: «1.  Titolo» (two spaces after the dot)
 
 ### 4. No bullet dumps
-Bullet lists from the source must be absorbed into prose paragraphs. Each bullet becomes a clause or sentence. Use connectives: "In primo luogo … In secondo luogo … Infine …", "da un lato … dall'altro …", "sotto il profilo giuridico … sotto quello tecnico …"
-
-Exception: structured tables (legal maps, comparison grids, sensitivity tables) stay as tables — do not prose-ify data.
+Bullet lists from the source must be absorbed into prose paragraphs. Each bullet becomes a clause or sentence. Use connectives (see palette below). Exception: structured tables stay as tables.
 
 ### 5. Paragraph structure
 Each paragraph should:
-- Open with a topic sentence that carries the main claim
-- Develop it with 2-4 supporting sentences
+- Open with a topic sentence carrying the main claim
+- Develop it with 2–4 supporting sentences
 - Close with a consequence or transition
-- Run 80–180 words (academic norm, not a hard cap)
+- Run 80–180 words (not a hard cap)
 
 ### 6. Italian punctuation norms
-- Quotation marks: «testo» (guillemets), not "testo"
+- Quotation marks: «testo» (guillemets)
 - Abbreviations: art., D.L., L., D.Lgs., c.c. (no spaces inside)
 - Decimal separator: comma (3,8% not 3.8%)
 - Thousands separator: punto (1.000 not 1,000)
-- Subscripts: P₀, Fₜ, VT (keep Unicode as-is if source uses them)
+- Subscripts: P₀, Fₜ, VT (keep Unicode as-is)
+
+### 7. Accented characters — mandatory, zero exceptions
+
+| Correct | Wrong | Common words |
+|---|---|---|
+| è | e | copula "is" |
+| é | e | perché, affinché, poiché, benché |
+| à | a | città, capacità, qualità, razionalità |
+| ò | o | però, ciò |
+| ù | u | più, già |
+
+**High-frequency words requiring accent every time:**
+`è` `ciò` `però` `più` `già` `così` `né` `perché` `poiché` `affinché` `benché`
+`città` `qualità` `capacità` `razionalità` `sostenibilità` `possibilità` `utilità`
+`specificità` `modalità` `fiscalità` `criticità` `complessità` `irreversibilità`
+
+**Distinction rule:** conjunction "and" → `e` (no accent); copula "is" → `è` (accent mandatory).
+
+**Python scripts:** Use actual Unicode characters in string literals, never `\u00e8` escapes.
+
+---
+
+## Italian Academic Connectives Palette
+
+**Note:** never use these as sentence openers. They are mid-clause or mid-sentence tools only.
+
+**Additive:** altresì · d'altra parte · va aggiunto che · occorre precisare che  
+**Contrastive:** ciononostante · pur riconoscendo che · al contrario · per converso  
+**Causal:** ne consegue che · da ciò deriva · si evince che · in ragione di  
+**Sequential:** in primo luogo … in secondo luogo … infine; dapprima … successivamente … da ultimo  
+**Exemplificative:** a titolo esemplificativo · si consideri il caso di · come emerge da · come documentato da  
+**Concessive:** pur ammettendo che · anche laddove · sebbene · nonostante  
+**Reformulating:** in altri termini · vale a dire · detto altrimenti · più precisamente  
 
 ---
 
@@ -70,76 +195,61 @@ Each paragraph should:
 ### Step 0 — Understand the source
 Read the full source before writing a single word. Identify:
 - Document type (slides / draft / raw PDF extract)
-- Section structure (what are the h1/h2 sections?)
+- Section structure
 - All factual anchors: numbers, citations, laws, institutions
-- Any em-dashes or AI slop patterns to flag
+- Em-dashes, bullet dumps, AI slop patterns to eliminate
 
 ### Step 1 — Plan the output structure
-Map source sections → output sections. If the source is a slide deck, infer a prose structure (intro → body sections → conclusion → bibliography). Show the user the planned structure before writing if the source is large or ambiguous.
+Map source sections → output sections. If the source is a slide deck, infer a prose structure (intro → body sections → conclusion → bibliography). Show the planned structure to the user if the source is large or ambiguous.
 
 ### Step 2 — Rewrite section by section
 For each section:
 1. Absorb all bullet points into flowing prose
-2. Eliminate em-dashes with the substitution rules above
-3. Apply academic register
-4. Verify every factual claim against the source text
-5. Check paragraph length and structure
+2. Eliminate em-dashes with substitution rules
+3. Apply burstiness: consciously vary sentence length
+4. Apply pro-drop: strip explicit subjects where Italian allows
+5. Insert at least one dislocation or cleft per 200 words
+6. Apply academic register
+7. Verify every factual claim against the source
+8. Check paragraph length and structure
 
 ### Step 3 — Post-process pass
-After drafting, run a final check:
-- [ ] Zero em-dashes remaining
+- [ ] Zero em-dashes remaining (`—` count = 0)
+- [ ] Zero blacklisted words (cruciale, fondamentale, etc.)
+- [ ] No forbidden sentence openers (tuttavia, inoltre, pertanto…)
+- [ ] No initial gerunds
+- [ ] No Title Case in headings
+- [ ] Sentence length variance: at least 20% of sentences under 8 words, at least 20% over 25 words
 - [ ] Every number/citation matches source
 - [ ] No double commas, colon-commas, or period-commas
-- [ ] Section numbering is sequential and consistent
-- [ ] Bibliography (if present) is collected at the end as a single block
+- [ ] Section numbering sequential and consistent
+- [ ] Bibliography at end as single block (if present)
 
 ### Step 4 — Output format
-If writing to a Word document (.docx), generate a Python script using `python-docx` that:
-- Uses Calibri 11pt Normal style
-- Uses heading level 1 (navy `#1F497D`) for h1, heading level 2 (blue `#2E74B5`) for h2
+**Word document (.docx):** generate a Python script using `python-docx`:
+- Calibri 11pt Normal style
+- Heading level 1 (navy `#1F497D`), heading level 2 (blue `#2E74B5`)
 - Justifies all body paragraphs
-- Adds tables with `'Table Grid'` style
-- Outputs to the user-specified path
+- Tables with `'Table Grid'` style
+- Output to user-specified path
 
-If writing to plain text, output raw Italian markdown.
-
----
-
-## Em-Dash Substitution Reference
-
-| Source pattern | Italian replacement |
-|---|---|
-| `X — Y` (parenthetical) | `X, Y` or `X: Y` depending on context |
-| `X — Y — Z` (nested aside) | rephrase as subordinate clause |
-| `— item` (bullet marker) | delete; item becomes a standalone sentence |
-| `X —` (trailing) | `X,` or end sentence |
-| `ovvero —` | `ovvero:` |
-| `cioè —` | `cioè:` |
-
----
-
-## Italian Academic Connectives Palette
-
-Use these to replace mechanical bullet-list structure:
-
-**Additive:** inoltre, altresì, d'altra parte, va aggiunto che, occorre precisare che  
-**Contrastive:** tuttavia, ciononostante, pur riconoscendo che, al contrario, per converso  
-**Causal:** pertanto, ne consegue che, da ciò deriva, si evince che, in ragione di  
-**Sequential:** in primo luogo … in secondo luogo … infine; dapprima … successivamente … da ultimo  
-**Exemplificative:** a titolo esemplificativo, si consideri il caso di, come emerge da, come documentato da  
-**Concessive:** pur ammettendo che, anche laddove, sebbene, nonostante  
-**Reformulating:** in altri termini, vale a dire, detto altrimenti, più precisamente  
+**Plain text:** output raw Italian markdown.
 
 ---
 
 ## Quality Gates
 
-Before delivering the output, verify:
+Before delivering output, verify:
 1. **Factual accuracy** — spot-check 5 random facts against source
-2. **Em-dash count** — search output for `—`; must be zero
-3. **Register consistency** — no colloquialisms or anglicisms
-4. **Structure completeness** — all source sections represented
-5. **Bibliography** — single block at end if source had references
+2. **Em-dash count** — must be zero
+3. **Blacklist scan** — zero occurrences of: cruciale, fondamentale, sfaccettato, resiliente, intrinseco, vibrante, esplorare, immergersi, svelare, plasmare, tessere
+4. **Forbidden openers** — no sentence starting with: Tuttavia / Inoltre / Peraltro / Pertanto / Di conseguenza / In conclusione / In sintesi / Detto ciò / In ultima analisi
+5. **Sentence length distribution** — no monotonous 15–20 word average; check for staccato variation
+6. **Pro-drop compliance** — no two consecutive sentences with same explicit subject
+7. **Dislocation count** — at least 2–3 dislocations or cleft sentences per page
+8. **Register consistency** — no colloquialisms or anglicisms (academic mode)
+9. **Structure completeness** — all source sections represented
+10. **Accents** — scan for bare `e`/`a`/`o`/`u`/`i` where accents are required; zero unaccented substitutions
 
 ---
 
@@ -152,7 +262,7 @@ Before delivering the output, verify:
 Then paste or attach the source material. Optionally specify:
 - Output format: `--docx <path>` or `--markdown` (default)
 - Target section: `--section "4.1"` to rewrite only a specific section
-- Register: `--register accademico` (default) or `--registro saggistico`
+- Register: `--registro accademico` (default) · `--registro saggistico` · `--registro conversazionale`
 
 ### Example invocation
 
@@ -164,9 +274,7 @@ Then paste or attach the source material. Optionally specify:
 
 ---
 
-## What the Skill Produces (from session evidence)
-
-In the session that defined this skill, the input was a pair of PDFs (slides + rough draft) and the output was:
+## What the Skill Produces (session evidence)
 
 - Two polished Italian docx chapters (~8,000 words combined)
 - Zero em-dashes (verified by regex scan)
