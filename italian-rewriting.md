@@ -593,17 +593,11 @@ Then paste or attach the source material. Optionally specify:
 
 ---
 
-## What the Skill Produces (session evidence)
+## What the Skill Produces
 
-- Two polished Italian docx chapters (~8,000 words combined)
+- One polished Italian document (any length — paragraph to full thesis chapter)
 - Zero em-dashes (verified by regex scan)
 - Natural Italian paragraph structure throughout
-- All legal citations (art. 11-quinquies DL 203/2005, L. 89/2014, etc.) preserved verbatim
-- All statistics (SCIP 55-65%, FIV geographic distribution, sensitivity table values) intact
-- Academic register appropriate for LUISS Scienza delle Finanze coursework
-- Final merged file via `create_final.py` with page break between chapters
-
-Scripts used:
-- `gen_doc1.py` — generates chapter 1 (vendita/razionalità)
-- `gen_doc2.py` — generates chapter 2 (valorizzabilità)
-- `create_final.py` — merges both into final docx, strips remaining em-dashes
+- All factual anchors (citations, statistics, legal references, proper nouns) preserved verbatim
+- All 27 quality gates applied across Layers 1–4
+- Output as `.docx` (via `python-docx` script) or plain markdown, at user's choice
