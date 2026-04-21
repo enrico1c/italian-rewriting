@@ -1,6 +1,6 @@
 # italian-rewriting
 
-A Claude skill that rewrites any source text into natural Italian prose that bypasses AI detectors (GPTZero, Originality.ai, ZeroGPT) and passes trained human editors. Preserves every fact, number, and citation exactly — changes only the language surface.
+A Claude skill that rewrites any source text into natural Italian prose that bypasses AI detectors (GPTZero, Originality.ai, ZeroGPT, Turnitin) and passes trained human editors. Preserves every fact, number, and citation exactly — changes only the language surface.
 
 ---
 
