@@ -66,9 +66,18 @@ Understanding the underlying mechanism lets you counteract it more precisely:
 **Forbidden as sentence openers** — Beam Search riskless openings (may appear mid-sentence only):
 `Tuttavia,` `Inoltre,` `Peraltro,` `Pertanto,` `Di conseguenza,` `In conclusione,` `In sintesi,` `Detto ciò,` `In ultima analisi,`
 
-### Burstiness — Mandatory Sentence Length Variance
+### Burstiness — Organic Sentence Length Variance
 
-AI text converges on 15–20 words per sentence. Destroy this average. Alternate complex hypotactic periods with brutal staccato sentences of two or three words. Use the period as a hammer.
+AI text converges on 15–20 words per sentence. Vary sentence length, but based on **rhetorical function** — not on a mechanical alternation pattern. A strict long-short-long-short loop creates an artificial oscillating wave that high-end detectors flag as programmed rather than human.
+
+**Rules:**
+- Short sentences (2–7 words): use for emphasis, conclusions, or a stark fact. Not on a fixed cycle.
+- Long sentences (25+ words): use when reasoning through a condition, listing multiple factors, or building nuance with an inciso.
+- Allow 2–4 consecutive sentences of similar length when the logic or pacing demands it.
+- Never produce a regular alternating pattern. Vary the distribution irregularly: sometimes three long then two short, sometimes five medium then one very short, sometimes a run of mediums with no staccato at all.
+
+> ✗ Mechanical (AI): 40-word sentence. 3-word sentence. 40-word sentence. 3-word sentence.
+> ✓ Organic (human): 30-word sentence. 22-word sentence. 18-word sentence. 4-word sentence. 28-word sentence.
 
 > ✗ AI: "È importante notare che il mercato obbligazionario ha registrato una contrazione significativa nel corso dell'ultimo trimestre, evidenziando una tendenza che merita ulteriore approfondimento."
 > ✓ Human: "Il mercato obbligazionario è crollato nell'ultimo trimestre. Non è una sorpresa."
@@ -405,6 +414,54 @@ When adding information, AI falls back on sequential listing or forbidden connec
 
 ---
 
+## Systemic Fixes — Cross-Layer Deep Structure
+
+These three problems survive all four layers. They are not surface patterns — they are architectural flaws in how AI constructs arguments and vocabulary. Without these fixes, a semantic-analysis detector (which graphs coherence, perplexity, and logical linearity) will still catch the output.
+
+### Fix 1: Perplexity Injection (Countering Low-Perplexity Registers)
+
+Academic and finance writing uses highly standardized vocabulary (*tassi di interesse*, *valorizzabilità*, *normativa*). This low lexical perplexity makes even genuine human academic text suspicious to detectors. The AI makes it worse by always choosing the most statistically expected term.
+
+**Rules:**
+- In every heavily technical passage, inject at least one vocabulary item from an **adjacent domain** (philosophy, sociology, jurisprudence, history) that is precise and defensible but unexpected in a pure finance context.
+  > e.g., in a finance paper: «una dinamica che ricorda più l'entropia di un sistema chiuso che una reazione razionale al mercato» — borrows from thermodynamics/philosophy.
+- Use **one domain-crossing metaphor per page maximum**. It must be semantically accurate, not decorative.
+- In runs of three or more technical terms, rotate at least one with a lay synonym even if the technical term would be more precise: this raises perplexity without sacrificing accuracy.
+- In academic mode, allow one **parenthetical inciso** per section to carry a slightly more informal register than the surrounding text — the register shift itself raises the perplexity signal.
+
+### Fix 2: Controlled Logical Non-Linearity (Breaking the Semantic Coherence Graph)
+
+AI builds arguments perfectly linearly: premise → evidence → conclusion, always left-to-right, never a wasted clause. Semantic coherence graphs reveal this as a geometrically perfect structure that no human consistently produces. The fix is not incoherence — it is **the controlled imperfection of a thinking mind**.
+
+**Rules:**
+
+**Conclusion-first structure** (at least once per section): Present the conclusion before its supporting evidence. Human writers do this constantly; AI almost never does because it requires resolving uncertainty before it has been computed.
+> «Il meccanismo è destinato a fallire. L'evidenza empirica — raccolta su tre cicli regolatori — non lascia spazio a interpretazioni alternative.»
+
+**Acknowledged tangent** (at least once per document): Include one brief aside that is related but not strictly necessary, explicitly flagged as such and then set aside.
+> «Si potrebbe aprire qui una riflessione sul ruolo della discrezionalità amministrativa — questione che meriterebbe trattazione separata — ma ai fini della presente analisi è sufficiente osservare che…»
+
+**Pivot structure** (replace at least one linear A→B→C argument per page): Present a partial claim, introduce a complication that partially undermines it, then reach a revised or qualified conclusion. This is how real reasoning works.
+> ✗ Linear AI: «X causa Y. Y porta a Z. Quindi X porta a Z.»
+> ✓ Pivot human: «X sembrerebbe causare Y. Eppure i dati del secondo campione complicano questa lettura: Y non emerge sempre, e quando emerge lo fa in forme attenuate. È più prudente affermare che X crea le condizioni per Y, non che lo determini.»
+
+**Open minor thread** (at least once per document): Leave one sub-point slightly unresolved — note the complexity and move on without tying it up perfectly. Perfect closure on every point is a machine signature.
+> «La questione della proporzionalità rimane aperta, e dipende in larga misura dalla giurisprudenza successiva.»
+
+**Prohibition:** Never structure every argument as a clean premise → argument → conclusion sequence. Mix pivot structures, conclusion-first structures, and open threads throughout.
+
+### Fix 3: Mechanical vs. Functional Burstiness (Detector Graph Evasion)
+
+*This fix is paired with the Burstiness rule above.* Sentence length must follow function, not a formula. When applying burstiness, ask: *Why is this sentence short? Why is this one long?* If the answer is "because the last one was long/short," rewrite it. The correct answers are:
+
+- Short: this is a conclusion, a stark fact, an emphatic point, or a deliberate pause.
+- Long: this is a chain of conditions, a nuanced qualification, a multi-factor comparison.
+- Medium: this is a transition, a causal statement, an example.
+
+If three consecutive sentences are all short for no functional reason, merge or expand one. If two consecutive long sentences share the same register and rhythm, break one differently or restructure.
+
+---
+
 ## Core Principles
 
 ### 1. Factual fidelity — zero tolerance for invention
@@ -540,7 +597,7 @@ Before delivering output, verify:
 2. **Em-dash count** — must be zero
 3. **Blacklist scan** — zero occurrences of: cruciale, fondamentale, sfaccettato, resiliente, intrinseco, vibrante, esplorare, immergersi, svelare, plasmare, tessere
 4. **Forbidden openers** — no sentence starting with: Tuttavia / Inoltre / Peraltro / Pertanto / Di conseguenza / In conclusione / In sintesi / Detto ciò / In ultima analisi
-5. **Sentence length distribution** — at least 20% of sentences under 8 words, at least 20% over 25 words; no monotonous 15–20 word average
+5. **Organic burstiness** — sentence length varies by rhetorical function, NOT by mechanical alternation; zero long-short-long-short loops; 2–4 consecutive similar-length sentences allowed when logic demands it; verify each short sentence has a functional reason (emphasis/conclusion/fact)
 6. **Pro-drop compliance** — no two consecutive sentences with same explicit subject
 7. **Dislocation count** — at least 2–3 dislocations or cleft sentences per page
 8. **Register consistency** — no colloquialisms or anglicisms (academic mode)
@@ -569,6 +626,11 @@ Before delivering output, verify:
 25. **Epistemic conditional** — at least 1 conditional mood use per page for tentative claims (suggerirebbe, porterebbe a ritenere, risulterebbe); max 3 per page
 26. **Quote integration** — zero bare *afferma:* / *sostiene:* colon introductions; all direct quotes woven into host sentence grammar
 27. **Correlative structures** — at least 1 correlative pairing per page (non solo/ma anche · tanto/quanto · sia/sia · né/né); zero sequential listings where a correlative would be more elegant
+
+**Systemic Fixes — Cross-Layer**
+28. **Perplexity injection** — at least 1 vocabulary item from an adjacent domain per technical page; at least 1 domain-crossing metaphor per page (max 1); no three consecutive technical terms without rotating one with a lay synonym
+29. **Logical non-linearity** — at least 1 conclusion-first structure per section; at least 1 acknowledged tangent per document; at least 1 pivot structure (partial claim → complication → qualified restatement) per page; at least 1 open minor thread per document; zero sections where every argument is clean premise→argument→conclusion
+30. **Burstiness functional audit** — for every sentence under 8 words: confirm it has a rhetorical reason (emphasis/fact/conclusion); for every run of 3+ short sentences: verify it is not a mechanical rhythm reset; zero long-short-long-short alternating loops
 
 ---
 
