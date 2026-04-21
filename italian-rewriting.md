@@ -615,17 +615,20 @@ Re-read these rule groups fresh before touching the chunk text:
 - [ ] At least 1 asyndeton transition (punctuation-only)
 - [ ] Seam with previous chunk reads naturally
 
-**2e — Update Ledger**
+**2e — Update Ledger & Pause (mandatory)**
 - Add any new core noun variants used
 - Mark structural elements placed
 - Record any new perplexity injection
-- Copy last sentence of this chunk into the Ledger
+- Copy last sentence of this chunk into the Ledger verbatim
+- Print the full updated Ledger to the user
+- **STOP GENERATING.** Print exactly: `"Chunk [i/N] complete. Type 'Next' to continue, or 'Assemble' if this was the last chunk."`
+- Do NOT proceed to the next chunk until the user types **Next** or **Assemble**. Each user turn resets attention fully, eliminating prompt fatigue and bypassing the output token limit.
 
-**→ Repeat Step 2 for next chunk until all N chunks are done.**
+### Step 3 — Final Assembly
 
-### Step 3 — Final Assembly and Document-Level Post-Process
+Triggered only when the user types **Assemble** (after the last chunk is confirmed).
 
-Assemble all chunks in order, then run the full quality gate pass across the assembled text:
+Run the full quality gate pass across all chunks in sequence, then produce the final continuous output:
 
 - [ ] Zero em-dashes remaining
 - [ ] Zero blacklisted words
@@ -634,10 +637,10 @@ Assemble all chunks in order, then run the full quality gate pass across the ass
 - [ ] Every number/citation matches source
 - [ ] No double commas, colon-commas, or period-commas
 - [ ] Section numbering sequential and consistent
-- [ ] Document-level structural elements all present: acknowledged tangent ✓, open thread ✓, ≥1 conclusion-first per section ✓
+- [ ] Document-level structural elements present: acknowledged tangent ✓, open thread ✓, ≥1 conclusion-first per section ✓
 - [ ] Perplexity injections distributed across chunks (not all in chunk 1)
 - [ ] Bibliography at end as single block (if present)
-- [ ] Chunk seams are invisible (no register shift, no subject repetition across boundary)
+- [ ] Chunk seams invisible (no register shift, no subject repetition across boundary)
 
 ### Step 4 — Output Format
 
