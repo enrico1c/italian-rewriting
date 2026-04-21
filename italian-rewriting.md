@@ -543,40 +543,104 @@ Each paragraph should:
 
 ## Workflow
 
-### Step 0 — Understand the source
-Read the full source before writing a single word. Identify:
+### Step 0 — Read and Chunk the Source
+
+Read the full source once before writing anything. Identify:
 - Document type (slides / draft / raw PDF extract)
-- Section structure
+- Section structure and natural split points
 - All factual anchors: numbers, citations, laws, institutions
-- Em-dashes, bullet dumps, AI slop patterns to eliminate
+- Approximate word count
 
-### Step 1 — Plan the output structure
-Map source sections → output sections. If the source is a slide deck, infer a prose structure (intro → body sections → conclusion → bibliography). Show the planned structure to the user if the source is large or ambiguous.
+**Chunking rule:**
+- ≤ 600 words → single chunk, no split needed
+- > 600 words → split into chunks of 400–600 words each, always at a natural boundary (section heading, paragraph end, never mid-sentence)
+- Number the chunks: [Chunk 1/N], [Chunk 2/N], etc.
+- Tell the user how many chunks were identified before starting
 
-### Step 2 — Rewrite section by section
-For each section:
+### Step 1 — Initialize the Continuity Ledger
+
+Before writing chunk 1, create a Continuity Ledger. Update it after every chunk. It tracks cross-chunk state so rules that span the whole document remain consistent.
+
+```
+CONTINUITY LEDGER
+─────────────────────────────────────────────
+Document scope:     [1-2 sentences on what this text is about]
+Register:           [accademico / saggistico / conversazionale]
+─────────────────────────────────────────────
+Core noun variants used:
+  [noun] → [variant 1 used in chunk X] → [variant 2 available]
+
+Structural elements used:
+  Acknowledged tangent:   [ ] not yet  /  [✓] done in chunk X
+  Open minor thread:      [ ] not yet  /  [✓] done in chunk X
+  Conclusion-first:       count so far = N
+
+Perplexity injections used:
+  [domain-crossing word/metaphor] → chunk X
+
+Last sentence of previous chunk:
+  [verbatim, to ensure continuity at the seam]
+─────────────────────────────────────────────
+```
+
+### Step 2 — Per-Chunk Rewriting Loop
+
+Repeat for each chunk [i/N]:
+
+**2a — Context Refresh (mandatory before each chunk)**
+Re-read these rule groups fresh before touching the chunk text:
+1. Absolute Lexical Blacklist (Layer 1)
+2. Burstiness / Pro-drop / Dislocation (Layer 1)
+3. Layer 2: Asyndeton · -mente limit · Support verbs · Ciò cap · Containment
+4. Layer 3: Lexical entrainment · Explanatory colon · Nominalization · Litotes · Collocations
+5. Layer 4: Semicolons · Inciso · Epistemic conditional · Quote weaving · Correlatives
+6. Systemic Fixes: Perplexity · Logical non-linearity · Functional burstiness
+
+**2b — Consult Ledger**
+- Check which core nouns have already been used → rotate to fresh variants
+- Check whether the acknowledged tangent and open thread have been placed → if not, plan where to insert them in this chunk or a future one
+- Read the last sentence of the previous chunk → ensure the new chunk opens with natural continuity (no repetition of the closing subject, no jarring register shift)
+
+**2c — Rewrite the chunk**
 1. Absorb all bullet points into flowing prose
 2. Eliminate em-dashes with substitution rules
-3. Apply burstiness: consciously vary sentence length
-4. Apply pro-drop: strip explicit subjects where Italian allows
-5. Insert at least one dislocation or cleft per 200 words
-6. Apply academic register
-7. Verify every factual claim against the source
-8. Check paragraph length and structure
+3. Apply all Layers 1–4 and Systemic Fixes
+4. Verify every factual claim against the source text
 
-### Step 3 — Post-process pass
-- [ ] Zero em-dashes remaining (`—` count = 0)
-- [ ] Zero blacklisted words (cruciale, fondamentale, etc.)
-- [ ] No forbidden sentence openers (tuttavia, inoltre, pertanto…)
-- [ ] No initial gerunds
-- [ ] No Title Case in headings
-- [ ] Sentence length variance: at least 20% of sentences under 8 words, at least 20% over 25 words
+**2d — Per-chunk quality check (fast, 6 items)**
+- [ ] Zero em-dashes, zero blacklisted words
+- [ ] No forbidden sentence openers
+- [ ] Burstiness is functional (not mechanical alternation)
+- [ ] At least 1 dislocation or cleft
+- [ ] At least 1 asyndeton transition (punctuation-only)
+- [ ] Seam with previous chunk reads naturally
+
+**2e — Update Ledger**
+- Add any new core noun variants used
+- Mark structural elements placed
+- Record any new perplexity injection
+- Copy last sentence of this chunk into the Ledger
+
+**→ Repeat Step 2 for next chunk until all N chunks are done.**
+
+### Step 3 — Final Assembly and Document-Level Post-Process
+
+Assemble all chunks in order, then run the full quality gate pass across the assembled text:
+
+- [ ] Zero em-dashes remaining
+- [ ] Zero blacklisted words
+- [ ] No forbidden sentence openers
+- [ ] No initial gerunds, no Title Case
 - [ ] Every number/citation matches source
 - [ ] No double commas, colon-commas, or period-commas
 - [ ] Section numbering sequential and consistent
+- [ ] Document-level structural elements all present: acknowledged tangent ✓, open thread ✓, ≥1 conclusion-first per section ✓
+- [ ] Perplexity injections distributed across chunks (not all in chunk 1)
 - [ ] Bibliography at end as single block (if present)
+- [ ] Chunk seams are invisible (no register shift, no subject repetition across boundary)
 
-### Step 4 — Output format
+### Step 4 — Output Format
+
 **Word document (.docx):** generate a Python script using `python-docx`:
 - Calibri 11pt Normal style
 - Heading level 1 (navy `#1F497D`), heading level 2 (blue `#2E74B5`)
